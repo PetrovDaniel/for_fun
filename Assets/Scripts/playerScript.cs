@@ -10,42 +10,52 @@ public class playerScript : MonoBehaviour
     float move = 0f;
     bool facingRight = true;
     public GameObject Shot;
-    public Transform RespawnShot;
-
+    public GameObject RespawnShot;
+    Rigidbody2D player;
+    GameObject bullet;
+    public float bulletForce = 50f;
 
     void FixedUpdate()
     {
-        //grounded = Physics2D.OverlapCircle(groundCheck.position, groundRadius, whatIsGround);
         move = Input.GetAxis("Horizontal");
     }
 
     // Start is called before the first frame update
     void Start()
     {
-
+        player = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
     void Update()
     {
         // стреляем
-        if(Input.GetButton("Jump"))
+        if(Input.GetButtonDown("Jump"))
         {
-            Instantiate(Shot, RespawnShot);
+            bullet = Instantiate(Shot, RespawnShot.transform.position, Quaternion.identity);
+
+            // кривое решение, но работает!!
+            if(facingRight)
+                bullet.GetComponent<Rigidbody2D>().AddForce(Vector2.right * bulletForce);
+            else
+                bullet.GetComponent<Rigidbody2D>().AddForce(Vector2.left * bulletForce);
+
+            Destroy(bullet, 1); // пока отладка - 1 секунд
         }
+
         // Прыгаем
         // /* забавно если раскоментировать*/ grounded = true;
         if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
         {
             if (grounded)
             {
-                GetComponent<Rigidbody2D>().velocity = new Vector2(GetComponent<Rigidbody2D>().velocity.x, jumpForce);
+                player.velocity = new Vector2(player.velocity.x, jumpForce);
             }
         }
 
         // Передвигаемся вдоль х
 
-        GetComponent<Rigidbody2D>().velocity = new Vector2(move * maxSpeed, GetComponent<Rigidbody2D>().velocity.y);
+        player.velocity = new Vector2(move * maxSpeed, player.velocity.y);
 
         if (move > 0 && !facingRight)
             Flip();
@@ -73,8 +83,9 @@ public class playerScript : MonoBehaviour
     void Flip()
     {
         facingRight = !facingRight;
-        Vector3 theScale = transform.localScale;
-        theScale.x *= -1;
-        transform.localScale = theScale;
+        player.transform.rotation = Quaternion.Euler(
+        transform.rotation.eulerAngles.x,
+        transform.rotation.eulerAngles.y + 180f,
+        transform.rotation.eulerAngles.z);
     }
 }

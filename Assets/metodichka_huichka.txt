@@ -1,0 +1,65 @@
+//////////////////////////////////////////////////////////
+// autor: Daniil Petrov
+// привет
+// сюда постараюсь записывать, все, в чем разобрался в unity
+// описание в свободной форме, понятное автору
+//////////////////////////////////////////////////////////
+
+//--------------------------------------------------------
+// языковые штучки-дрючки
+//--------------------------------------------------------
+var varible_name; // а-ля void на сколько понял, создает неявнотипизированную переменную
+
+
+//--------------------------------------------------------
+// тригеры-хуигеры
+//--------------------------------------------------------
+OnTriggerEnter2D();
+OnTriggerExit2D();
+// библиотечные функции для работы с тригером   // а если несколько тригерров у тела????
+
+//--------------------------------------------------------
+// кнопки-уебки
+// способ работы со стандартным потоком ввода
+//--------------------------------------------------------
+float Input.GetAxis(char[]);                   
+// на разных устройствах и при разных конфигурациях могут быть настроены разные клавиши на передвижение
+// "Horizontal"
+// "Vertical"
+// получем значение на передвижение [-1..1]
+
+bool Input.GetButton(char[]);       // возвращает состояние кнопки
+bool Input.GetButtonDown(char[]);   // ловит нажатие кнопки
+bool Input.GetButtonUp(char[]);     // ловит отпускание кнопки
+// на разных устройствах и при разных конфигурациях могут быть настроены разные клавиши на передвижение
+// настраиваются как ключевые слова константы в проекте
+
+bool Input.GetKey(Key Code);        // возвращает состояние кнопки
+bool Input.GetKeyDown(Key Code);    // ловит нажатие кнопки
+bool Input.GetKeyUp(Key Code);      // ловит отпускание кнопки
+// позволяет обращаться к определенным клавишам, сразу видно про кого речь
+
+//--------------------------------------------------------
+// работа с объектами
+//--------------------------------------------------------
+
+body_type GetComponent<body_type>();
+// возвращает указатель на объект
+// по хорошему следует проверять на NULL
+
+
+public static GameObject Instantiate(GameObject original);
+public static GameObject Instantiate(GameObject original, Transform parent);                                        // создает объект дочерним по отношению к parent
+public static GameObject Instantiate(GameObject original, Transform parent, bool instantiateInWorldSpace);
+public static GameObject Instantiate(GameObject original, Vector3 position, Quaternion rotation);                   // создает объект самостоятельным
+public static GameObject Instantiate(GameObject original, Vector3 position, Quaternion rotation, Transform parent);
+
+// создает GameObject
+
+
+как будет время, надо поиграться с этими прикалясами и разобраться в поворотах
+
+        Debug.Log(" player.transform.rotation" + player.transform.rotation);
+        Debug.Log(" transform.rotation.eulerAngles" + transform.rotation.eulerAngles);
+        Debug.Log(" Vector2.right * player.transform.rotation.x * 10" + Vector2.right * player.transform.rotation.x * 10);
+        Debug.Log(" player.transform.rotation.y " + player.transform.rotation.y);

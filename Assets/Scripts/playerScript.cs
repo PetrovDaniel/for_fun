@@ -14,6 +14,15 @@ public class playerScript : MonoBehaviour
     Rigidbody2D player;
     GameObject bullet;
     public float bulletForce = 50f;
+    Animator anim;
+
+    private playerState State
+    {
+        get { return (playerState)anim.GetInteger("State"); }
+        set { anim.SetInteger("State", (int)value); }
+    }
+
+
 
     void FixedUpdate()
     {
@@ -24,11 +33,14 @@ public class playerScript : MonoBehaviour
     void Start()
     {
         player = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        State = playerState.Idle; 
+        
         // стреляем
         if(Input.GetButtonDown("Jump"))
         {
@@ -41,6 +53,8 @@ public class playerScript : MonoBehaviour
                 bullet.GetComponent<Rigidbody2D>().AddForce(Vector2.left * bulletForce);
 
             Destroy(bullet, 1); // пока отладка - 1 секунд
+
+            State = playerState.Attack;
         }
 
         // Прыгаем
@@ -51,11 +65,15 @@ public class playerScript : MonoBehaviour
             {
                 player.velocity = new Vector2(player.velocity.x, jumpForce);
             }
+
+            State = playerState.Jump;
         }
 
         // Передвигаемся вдоль х
 
         player.velocity = new Vector2(move * maxSpeed, player.velocity.y);
+        if (move != 0)
+            State = playerState.Run;
 
         if (move > 0 && !facingRight)
             Flip();
@@ -88,4 +106,13 @@ public class playerScript : MonoBehaviour
         transform.rotation.eulerAngles.y + 180f,
         transform.rotation.eulerAngles.z);
     }
+}
+
+// состояния персонажа
+public enum playerState 
+{
+    Idle,
+    Run,
+    Jump,
+    Attack
 }

@@ -171,7 +171,7 @@ Camera:
     height: 1
   near clip plane: 0.2
   far clip plane: 100
-  field of view: 155.79369
+  field of view: 110
   orthographic: 0
   orthographic size: 5
   m_Depth: 0
@@ -196,7 +196,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 387650091}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -20.78208, y: 17.00307, z: -19.988281}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -598,6 +598,11 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 166836074692399039, guid: 33812c7b14fd7874eae0d89aa59f3cd3,
+        type: 3}
+      propertyPath: m_Name
+      value: ShotSpawn
+      objectReference: {fileID: 0}
     - target: {fileID: 6249500176488750444, guid: 33812c7b14fd7874eae0d89aa59f3cd3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -606,12 +611,12 @@ PrefabInstance:
     - target: {fileID: -2781481204494571249, guid: 33812c7b14fd7874eae0d89aa59f3cd3,
         type: 3}
       propertyPath: jumpForce
-      value: 20
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: -2781481204494571249, guid: 33812c7b14fd7874eae0d89aa59f3cd3,
         type: 3}
       propertyPath: maxSpeed
-      value: 30
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: -2781481204494571249, guid: 33812c7b14fd7874eae0d89aa59f3cd3,
         type: 3}
@@ -689,6 +694,16 @@ PrefabInstance:
       propertyPath: m_ApplyRootMotion
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8806968956549506543, guid: 33812c7b14fd7874eae0d89aa59f3cd3,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: d623bd6f2e45bfa4285aa049886f1444, type: 2}
+    - target: {fileID: 8806968956549506543, guid: 33812c7b14fd7874eae0d89aa59f3cd3,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1704616404, guid: 33812c7b14fd7874eae0d89aa59f3cd3, type: 3}
       propertyPath: m_Constraints
       value: 4
@@ -715,10 +730,15 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 166836074692399039, guid: 33812c7b14fd7874eae0d89aa59f3cd3,
+    - target: {fileID: 2070405617570825585, guid: 33812c7b14fd7874eae0d89aa59f3cd3,
         type: 3}
-      propertyPath: m_Name
-      value: ShotSpawn
+      propertyPath: m_LocalPosition.y
+      value: 9.65
+      objectReference: {fileID: 0}
+    - target: {fileID: 2070405617570825585, guid: 33812c7b14fd7874eae0d89aa59f3cd3,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 5.72
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 33812c7b14fd7874eae0d89aa59f3cd3, type: 3}

@@ -1,35 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &166836074692399039
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2070405617570825585}
-  m_Layer: 0
-  m_Name: GameObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2070405617570825585
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 166836074692399039}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.5, y: 9.22, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 8892098416870130041}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &1704616404
 Rigidbody2D:
   serializedVersion: 4
@@ -349,22 +319,6 @@ PolygonCollider2D:
       - {x: -1.6425804, y: -0.004549767}
       - {x: -1.6113646, y: -0.066981405}
       - {x: -1.5801488, y: -0.07738668}
---- !u!70 &6059019044037532147
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8893109641419182127}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.11, y: 1.08}
-  m_Size: {x: 6.31, y: 3.21}
-  m_Direction: 1
 --- !u!114 &-2781481204494571249
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -379,8 +333,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxSpeed: 500
   jumpForce: 700
-  Shot: {fileID: 6365166962267104974, guid: ad46acde8bf2b294f890dbf1c1bb4929, type: 3}
-  RespawnShot: {fileID: 0}
 --- !u!1001 &8892675879424549297
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -403,11 +355,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4000010862813384, guid: 2315039dc3e7b47bbb8ec7de5b418163, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -28.154339
+      value: -29.04
       objectReference: {fileID: 0}
     - target: {fileID: 4000010862813384, guid: 2315039dc3e7b47bbb8ec7de5b418163, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 7.6802607
+      value: 9.84
       objectReference: {fileID: 0}
     - target: {fileID: 4000010862813384, guid: 2315039dc3e7b47bbb8ec7de5b418163, type: 3}
       propertyPath: m_LocalPosition.z
@@ -450,12 +402,6 @@ PrefabInstance:
 --- !u!1 &8893109641419182127 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1000010836390302, guid: 2315039dc3e7b47bbb8ec7de5b418163,
-    type: 3}
-  m_PrefabInstance: {fileID: 8892675879424549297}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &8892098416870130041 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4000010862813384, guid: 2315039dc3e7b47bbb8ec7de5b418163,
     type: 3}
   m_PrefabInstance: {fileID: 8892675879424549297}
   m_PrefabAsset: {fileID: 0}

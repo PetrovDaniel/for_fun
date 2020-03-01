@@ -611,12 +611,12 @@ PrefabInstance:
     - target: {fileID: -2781481204494571249, guid: 33812c7b14fd7874eae0d89aa59f3cd3,
         type: 3}
       propertyPath: jumpForce
-      value: 50
+      value: 65
       objectReference: {fileID: 0}
     - target: {fileID: -2781481204494571249, guid: 33812c7b14fd7874eae0d89aa59f3cd3,
         type: 3}
       propertyPath: maxSpeed
-      value: 40
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: -2781481204494571249, guid: 33812c7b14fd7874eae0d89aa59f3cd3,
         type: 3}
@@ -634,6 +634,11 @@ PrefabInstance:
       propertyPath: RespawnShot
       value: 
       objectReference: {fileID: 1540242004}
+    - target: {fileID: -2781481204494571249, guid: 33812c7b14fd7874eae0d89aa59f3cd3,
+        type: 3}
+      propertyPath: bulletForce
+      value: 70
+      objectReference: {fileID: 0}
     - target: {fileID: 8892098416870130041, guid: 33812c7b14fd7874eae0d89aa59f3cd3,
         type: 3}
       propertyPath: m_LocalPosition.x

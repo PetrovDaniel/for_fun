@@ -16,6 +16,7 @@ public class playerScript : MonoBehaviour
     public float bulletForce = 50f;
     Animator anim;
 
+
     private playerState State
     {
         get { return (playerState)anim.GetInteger("State"); }
@@ -39,52 +40,19 @@ public class playerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        State = playerState.Idle; 
-        
+        State = playerState.Idle;
+
         // стреляем
-        if(Input.GetButtonDown("Jump"))
-        {
-            bullet = Instantiate(Shot, RespawnShot.transform.position, Quaternion.identity);
-
-            // кривое решение, но работает!!
-            if(facingRight)
-                bullet.GetComponent<Rigidbody2D>().AddForce(Vector2.right * bulletForce);
-            else
-                bullet.GetComponent<Rigidbody2D>().AddForce(Vector2.left * bulletForce);
-
-            Destroy(bullet, 1); // пока отладка - 1 секунд
-
-            State = playerState.Attack;
-        }
+        AttackMove();
 
         // Прыгаем
-        // /* забавно если раскоментировать*/ grounded = true;
-        if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
-        {
-            if (grounded)
-            {
-                player.velocity = new Vector2(player.velocity.x, jumpForce);
-            }
-
-            State = playerState.Jump;
-        }
+        JumpMove();
 
         // Передвигаемся вдоль х
+        RunMove();
 
-        player.velocity = new Vector2(move * maxSpeed, player.velocity.y);
-        if (move != 0)
-            State = playerState.Run;
-
-        if (move > 0 && !facingRight)
-            Flip();
-        else if (move < 0 && facingRight)
-            Flip();
-         
         // выходим на esc 
-        if (Input.GetKey(KeyCode.Escape))
-        {
-            Application.Quit();
-        }
+        Exit();
     }
 
 
@@ -105,6 +73,51 @@ public class playerScript : MonoBehaviour
         transform.rotation.eulerAngles.x,
         transform.rotation.eulerAngles.y + 180f,
         transform.rotation.eulerAngles.z);
+    }
+    void AttackMove()
+    {
+        if (Input.GetButtonDown("Jump"))
+        {
+            State = playerState.Attack;
+            bullet = Instantiate(Shot, RespawnShot.transform.position, Quaternion.identity);
+
+            // кривое решение, но работает!!
+            if (facingRight)
+                bullet.GetComponent<Rigidbody2D>().AddForce(Vector2.right * bulletForce);
+            else
+                bullet.GetComponent<Rigidbody2D>().AddForce(Vector2.left * bulletForce);
+
+            Destroy(bullet, 1);
+        }
+    }
+    void JumpMove()
+    {
+        if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
+        {
+            if (grounded)
+            {
+                player.velocity = new Vector2(player.velocity.x, jumpForce);
+                State = playerState.Jump;
+            }
+        }
+    }
+    void RunMove()
+    {
+        player.velocity = new Vector2(move * maxSpeed, player.velocity.y);
+        if (move != 0 && grounded)
+            State = playerState.Run;
+
+        if (move > 0 && !facingRight)
+            Flip();
+        else if (move < 0 && facingRight)
+            Flip();
+    }
+    void Exit()
+    {
+        if (Input.GetKey(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
     }
 }
 
